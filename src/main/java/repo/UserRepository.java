@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @Repository
-public class UserRepository {
+public class UserRepository implements UserRepoTemplate{
     Connection connection;
     Statement stmt;
 

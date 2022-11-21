@@ -8,15 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 @Service
-public class UserService {
+public class UserService implements UserServiceTemplate{
     private final UserRepository userRepository;
-//    private static UserService userService;
-//    public static UserService getInstance(){
-//        if(userService==null){
-//            userService=new UserService();
-//        }
-//        return userService;
-//    }
 
     public UserService( UserRepository userRepository) {
         this.userRepository = userRepository;

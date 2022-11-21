@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.stream.Collectors;
 
 @Service
-public class TodoItemsService {
+public class TodoItemsService implements TodoItemServiceTemplate{
     private final TodoItemsRepository repository;
     private Font font;
 
@@ -119,7 +119,7 @@ public class TodoItemsService {
     }
 
     /// Nadah: needs modification
-    private void printListItems(int lastIndex, ArrayList<TodoItem> userTodoItems) {
+    public void printListItems(int lastIndex, ArrayList<TodoItem> userTodoItems) {
         for (int i = 0; i < lastIndex; i++) {
             System.out.println(userTodoItems.get(i));
         }

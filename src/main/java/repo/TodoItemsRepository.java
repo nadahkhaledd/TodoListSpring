@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @Repository
-public class TodoItemsRepository {
+public class TodoItemsRepository implements TodoItemRepoTemplate {
     Connection connection;
     Statement stmt;
     DBConnection dbConnection = new DBConnection();
@@ -198,6 +198,7 @@ public class TodoItemsRepository {
             return false;
         }
     }
+
 
     public boolean addItemToCategory(String name,String title, Category category){
         String idSubQuery = "(SELECT iduser FROM todolist.user where name= '"+name+"')";
