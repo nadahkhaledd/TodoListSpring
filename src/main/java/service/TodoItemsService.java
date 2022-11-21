@@ -4,7 +4,9 @@ import enums.Category;
 import enums.Priority;
 import enums.SearchKey;
 import model.TodoItem;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import repo.TodoItemRepoTemplate;
 import repo.TodoItemsRepository;
 import ui.Font;
 import utility.DateUtils;
@@ -20,17 +22,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class TodoItemsService implements TodoItemServiceTemplate{
-    private final TodoItemsRepository repository;
+
+    private final TodoItemRepoTemplate repository;
     private Font font;
 
-//    private static TodoItemsService todoService;
-//    public static TodoItemsService getInstance(){
-//        if (todoService==null){
-//            todoService=new TodoItemsService();
-//        }
-//        return todoService;
-//    }
-
+   @Autowired
     public TodoItemsService( TodoItemsRepository todoItemsRepository) {
         this.repository = todoItemsRepository;
         this.font = new Font();

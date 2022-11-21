@@ -11,24 +11,12 @@ import java.sql.SQLException;
 public class DBConnection {
 
     DBConfig dbConfig;
-
-//    private String url;
-//    private String dbName;
-//    private String dbUserName;
-//    private String password;
-public Connection connection;
+    public Connection connection;
 
     @Autowired
     public DBConnection(DBConfig config) {
         this.dbConfig=config;
     }
-
-//    public DBConnection(String url, String dbName, String dbUserName, String password) {
-//        this.url = url;
-//        this.dbName = dbName;
-//        this.dbUserName = dbUserName;
-//        this.password = password;
-//    }
 
     public Connection configureConnection() {
         System.out.println(dbConfig.url + dbConfig.dbName);

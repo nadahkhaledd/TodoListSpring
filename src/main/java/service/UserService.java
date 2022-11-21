@@ -1,6 +1,7 @@
 package service;
 
 import org.springframework.stereotype.Service;
+import repo.UserRepoTemplate;
 import repo.UserRepository;
 
 import java.sql.ResultSet;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 @Service
 public class UserService implements UserServiceTemplate{
-    private final UserRepository userRepository;
+    private final UserRepoTemplate userRepository;
 
     public UserService( UserRepository userRepository) {
         this.userRepository = userRepository;
