@@ -4,6 +4,7 @@ package repo;
 import enums.Category;
 import connection.DBConnection;
 import model.TodoItem;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -15,9 +16,9 @@ import java.sql.Statement;
 public class TodoItemsRepository implements TodoItemRepoTemplate {
     Connection connection;
     Statement stmt;
-    DBConnection dbConnection = new DBConnection();
-
-    public TodoItemsRepository() {
+    DBConnection dbConnection;// = new DBConnection();
+    @Autowired
+    public TodoItemsRepository(DBConnection dbConnection) {
         //this.dbConnection = dbConnection;
         connection = dbConnection.configureConnection();
         try {

@@ -9,9 +9,9 @@ public class Main {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
-//        TodoItemsService todoItemsService = context.getBean(TodoItemsService.class);
+        TodoItemsService todoItemsService = context.getBean(TodoItemsService.class);
 //
-//        todoItemsService.showTop5ItemsByDate("nadah");
+       todoItemsService.showTop5ItemsByDate("Hagar");
 
     }
 

@@ -1,6 +1,7 @@
 package repo;
 
 import connection.DBConnection;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -13,11 +14,12 @@ public class UserRepository implements UserRepoTemplate{
     Connection connection;
     Statement stmt;
 
-    DBConnection dbConnection = new DBConnection();
+    DBConnection dbConnection ;//= new DBConnection();
 
-    public UserRepository() {
+    @Autowired
+    public UserRepository(DBConnection dbConnection) {
         System.out.println("hello from repo");
-        //this.dbConnection = dbConnection;
+        this.dbConnection = dbConnection;
         connection = dbConnection.configureConnection();
         try {
             stmt = connection.createStatement();

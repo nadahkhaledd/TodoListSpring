@@ -1,23 +1,26 @@
 package connection;
 
 import main.AppConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+@Component
 public class DBConnection {
 
-    DBConfig dbConfig = new DBConfig();
+    DBConfig dbConfig;
 
 //    private String url;
 //    private String dbName;
 //    private String dbUserName;
 //    private String password;
-static Connection connection;
+public Connection connection;
 
-    public DBConnection() {
+    @Autowired
+    public DBConnection(DBConfig config) {
+        this.dbConfig=config;
     }
 
 //    public DBConnection(String url, String dbName, String dbUserName, String password) {
