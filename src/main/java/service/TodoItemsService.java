@@ -32,7 +32,9 @@ public class TodoItemsService implements TodoItemServiceTemplate{
         this.font = new Font();
 
     }
-
+    public boolean itemExists(String title,ArrayList<TodoItem> items) {
+        return getItemByTitle(title,items) != -1;
+    }
     public ArrayList<TodoItem> getItemsByPriority(Priority priority, ArrayList<TodoItem> userItems) {
         ArrayList<TodoItem> result = (ArrayList<TodoItem>) userItems.stream()
                 .filter(item -> item.getPriority() == priority).collect(Collectors.toList());
@@ -77,9 +79,11 @@ public class TodoItemsService implements TodoItemServiceTemplate{
         else
             userTodoItems.forEach(System.out::println);
     }
+   public ArrayList<TodoItem> getUserTodos(String username){
+       return getTodosFromDB(repository.getUserTodos(username));
+   }
 
-
-    public ArrayList<TodoItem> getTodosFromDB(ResultSet result) {
+    private ArrayList<TodoItem> getTodosFromDB(ResultSet result) {
         ArrayList<TodoItem> todos = new ArrayList<>();
 
         DateUtils dateUtils = new DateUtils();
@@ -150,7 +154,7 @@ public class TodoItemsService implements TodoItemServiceTemplate{
             case EndDate:
                 try {
                     Date endDate = new SimpleDateFormat("yyyy-MM-dd").parse(searchValue);
-                    userTodos = userTodos = getTodosFromDB(repository.searchByEndDate(username, searchValue));
+                    userTodos = getTodosFromDB(repository.searchByEndDate(username, searchValue));
                 } catch (ParseException e) {
                     System.out.println(font.ANSI_RED + "invalid date format" + font.ANSI_RESET);
 

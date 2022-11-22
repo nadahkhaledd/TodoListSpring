@@ -19,10 +19,11 @@ public interface TodoItemServiceTemplate {
      boolean updateTodoItem(String name,TodoItem item, String oldTitle);
      boolean deleteTodoItem(String title, String name);
      void showAllTodoItems(ArrayList<TodoItem> userTodoItems);
-     ArrayList<TodoItem> getTodosFromDB(ResultSet result);
+     public ArrayList<TodoItem> getUserTodos(String username);
      void showTop5ItemsByDate(String username);
      void printListItems(int lastIndex, ArrayList<TodoItem> userTodoItems);
-     public int getItemByTitle(String title, ArrayList<TodoItem> userTodoItems);
+     boolean itemExists(String title,ArrayList<TodoItem> items);
+     int getItemByTitle(String title, ArrayList<TodoItem> userTodoItems);
      public ArrayList<TodoItem>searchByKey(SearchKey searchKey, String searchValue, String username);
      public ArrayList<TodoItem> searchShowItemsBySearchKey(SearchKey searchKey, String searchValue, ArrayList<TodoItem> userTodoItems);
      public boolean addItemToFavorite(String name,String title);

@@ -9,9 +9,11 @@ public class Main {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
-        TodoItemsService todoItemsService = context.getBean(TodoItemsService.class);
+       // TodoItemsService todoItemsService = context.getBean(TodoItemsService.class);
 //
-       todoItemsService.showTop5ItemsByDate("Hagar");
+       //todoItemsService.showTop5ItemsByDate("Hagar");
+        Simulator simulator=context.getBean(Simulator.class);
+        simulator.start();
 
     }
 

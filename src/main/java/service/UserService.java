@@ -1,5 +1,8 @@
 package service;
 
+import model.TodoItem;
+import model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repo.UserRepoTemplate;
 import repo.UserRepository;
@@ -10,10 +13,14 @@ import java.util.ArrayList;
 
 @Service
 public class UserService implements UserServiceTemplate{
-    private final UserRepoTemplate userRepository;
 
-    public UserService( UserRepository userRepository) {
+    private  UserRepoTemplate userRepository;
+    private TodoItemServiceTemplate todoService;
+    public UserService(){}
+     @Autowired
+    public UserService( UserRepoTemplate userRepository,TodoItemServiceTemplate todoService) {
         this.userRepository = userRepository;
+        this.todoService=todoService;
     }
 
     public boolean addUser(String name) {
@@ -27,6 +34,10 @@ public class UserService implements UserServiceTemplate{
         }
         return false;
     }
+   public ArrayList<TodoItem> getUserTodos(String username){
+       return todoService.getUserTodos(username);
+      // todoService.getTodosFromDB(userRepository.getUserTodos(username));
+   }
 
     public ArrayList<String> getUserNames(){
         ResultSet result = userRepository.getUserNames();
@@ -41,4 +52,11 @@ public class UserService implements UserServiceTemplate{
         }
         return usernames;
     }
+    public User setUserData(String username, ArrayList<TodoItem> items) {
+        User user = new User(username);
+        user.setItems(items);
+        return user;
+    }
+
+
 }
