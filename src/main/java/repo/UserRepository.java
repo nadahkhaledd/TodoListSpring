@@ -18,7 +18,6 @@ public class UserRepository implements UserRepoTemplate{
 
     @Autowired
     public UserRepository(DBConnection dbConnection) {
-        System.out.println("hello from repo");
         this.dbConnection = dbConnection;
         connection = dbConnection.configureConnection();
         try {
